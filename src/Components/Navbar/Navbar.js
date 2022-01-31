@@ -1,14 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 import "./Navbar.css"
+import { Link, NavLink } from 'react-router-dom';
+import ModalCompte from '../ModalCompte/ModalCompte';
 
-export default function Navbar() {
+export default function Navbar(props) {
+
+
     return (
         // partie fr/en/nl
-
         <div className='cardreNavbar'>
             {/* partie haut navbar  => FR/EN/NL */}
             <div className="langue">
-                <span><span className='text-success'>FR</span> / EN / NL</span>
+                <span><span className='text-success'>FR</span> / <span>EN</span> / <span>NL</span></span>
             </div>
             {/* partie Input recherche du Header */}
             <div className="preNavbar">
@@ -19,7 +23,7 @@ export default function Navbar() {
                 <div className="panier">
                     <div className='monCompte bg-success text-white'>
                     <i class="far fa-user-circle"></i>
-                    <span className='ps-2'>Mon Compte</span>
+                    <span onClick={props.modalOn} className='ps-2'>Mon Compte</span>
                     </div>
                     <div className='monPanier bg-success text-white'>
                     <i class="fas fa-list"></i>
@@ -31,7 +35,7 @@ export default function Navbar() {
             <div className="divNavbar">
                 <nav class="navbar navbar-light navbar-expand-md">
                     <div class="container">
-                        <div class="navbar-brand">
+                        <div id='jardin' class="navbar-brand">
                             Jardin du Monde
                         </div>
                         {/* <!-- Le bouton s'affichera en petit écran --> */}
@@ -42,16 +46,24 @@ export default function Navbar() {
                         <div class="collapse navbar-collapse" id="monMenuDeroulant">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link active">Accueil</a>
+                                    <NavLink 
+                                    className={({isActive}) => isActive ? "activeLink" : ""}
+                                    to="/" href="#" class="nav-link active">Accueil</NavLink>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Best Seller</a>
+                                    <NavLink 
+                                    className={({isActive}) => isActive ? "activeLink" : ""}
+                                    to="seller" href="#" class="nav-link">Best Seller</NavLink>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Idées Cadeaux</a>
+                                    <NavLink 
+                                    className={({isActive}) => isActive ? "activeLink" : ""}
+                                    to="cadeaux" href="#" class="nav-link">Idées Cadeaux</NavLink>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Contact</a>
+                                    <NavLink 
+                                    className={({isActive}) => isActive ? "activeLink" : ""}
+                                    to="contact" href="#" class="nav-link">Contact</NavLink>
                                 </li>
                             </ul>
                         </div>

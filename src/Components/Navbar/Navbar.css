@@ -14,6 +14,10 @@
 
 }
 
+/* .jardin{
+    font-family: Neonderthaw, Arial, Helvetica, sans-serif;
+} */
+
 .langue{
     position: absolute;
     top: 10px;
@@ -22,6 +26,10 @@
     font-weight: bold;
     color: grey;
 
+}
+
+.langue span{
+    cursor: pointer;
 }
 
 .cardreNavbar{
@@ -71,12 +79,15 @@
     padding: 10px;
     margin-right: 50px;
     border-radius: 10px;
+    cursor: pointer;
 }
+
 
 .monPanier{
     border: 1px solid rgba(230,224,216,255);
     padding: 10px;
-    border-radius: 10px;    
+    border-radius: 10px; 
+    cursor: pointer;   
 }
 
 /* La Navbar  */
@@ -85,6 +96,19 @@
     background-color: rgba(230,224,216,255);
 }
 
+.nav-item a{
+    list-style: none;
+    text-decoration: none;
+    color: grey;
+    margin: 20px;
 
+}
 
+/* Pour le NavLink isActive */
+.activeLink{
+    background-color: rgb(52, 100, 52);
+    color: white !important;
+    padding: 5px;
+    border-radius: 10px;
+}
 
