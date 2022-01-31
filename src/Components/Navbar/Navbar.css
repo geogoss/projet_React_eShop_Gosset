@@ -1,4 +1,18 @@
+@media screen and (min-width: 320px) and (max-width: 700px) {
+    .preNavbar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .divInput{
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    .panier{
+        font-size: 10px;
+    }
 
+}
 
 .langue{
     position: absolute;
@@ -29,34 +43,37 @@
 
 }
 
-.divInput{
-    width: 70%;
-
-
-}
 
 .divInput input{
     border-radius: 10px;
-    width: 70%;
+    width: 50%;
     padding: 10px;
 
 }
 
+.divInput span{
+    width: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .panier{
-    width: 40%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.panier span:first-child{
+.monCompte{
     border: 1px solid rgba(230,224,216,255);
     padding: 10px;
     margin-right: 50px;
     border-radius: 10px;
 }
 
-.panier span:nth-child(2){
+.monPanier{
     border: 1px solid rgba(230,224,216,255);
     padding: 10px;
     border-radius: 10px;    

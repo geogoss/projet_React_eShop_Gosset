@@ -8,17 +8,23 @@ export default function Navbar() {
         <div className='cardreNavbar'>
             {/* partie haut navbar  => FR/EN/NL */}
             <div className="langue">
-                <span>FR / EN / NL</span>
+                <span><span className='text-success'>FR</span> / EN / NL</span>
             </div>
             {/* partie Input recherche du Header */}
             <div className="preNavbar">
                 <div className="divInput input-group">
-                    <input type="text" placeholder='chercher' />
-                    <span className='input-group-text'><i class="fas fa-search"></i></span>
+                    <input type="text" placeholder='Chercher' />
+                    <span className='input-group-text bg-success text-white'><i class="fas fa-search"></i></span>
                 </div>
                 <div className="panier">
-                    <span>Mon Compte</span>
-                    <span>Panier<i class="fas fa-search"></i></span>
+                    <div className='monCompte bg-success text-white'>
+                    <i class="far fa-user-circle"></i>
+                    <span className='ps-2'>Mon Compte</span>
+                    </div>
+                    <div className='monPanier bg-success text-white'>
+                    <i class="fas fa-list"></i>
+                    <span className='ps-2'>Panier</span>
+                    </div>
                 </div>
             </div>
         {/* Partie Navabar du header */}
