@@ -1,0 +1,92 @@
+.card {
+    border: solid 1px rgb(228, 228, 228);
+    border-radius: 5px;
+    width: 280px;
+}
+
+.allArticle img {
+    width:100%;
+}
+
+.allArticle{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.imgdiv {
+    display: flex;
+    justify-content: center;
+}
+
+/* .bottomcard {
+    
+} */
+
+
+.bottomcard0 {
+    padding: 0 7%;
+    background-color: red;
+}
+
+.bottomcard1 {
+    padding: 0 7%;
+    background-color: orange;
+}
+
+h5, .latin, .detail, .mesure{
+    text-align: start;
+    padding-left: 10px;
+}
+
+.latin{
+    color: thistle;
+}
+
+.detail{
+    display: flex;
+    font-size: 0.85rem;
+}
+
+.latin{
+    font-style: italic;
+}
+
+.payement{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prix{
+    font-weight: 600;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+.mesure{
+    font-weight: 700;
+    font-size: 0.80rem;
+    margin-bottom: 2px;
+}
+
+.cadre{
+    border: solid white;
+    background-color: rgba(90, 90, 90, 0.055);
+    margin: auto 25px;
+    border-radius: 10px;
+}
+
+.card button {
+    width: 80px;
+    height: 30px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background-color: #94c4a0;
+    color: rgb(78, 78, 78);
+}
