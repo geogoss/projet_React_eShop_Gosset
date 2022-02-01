@@ -32,11 +32,11 @@ export default function Panier(props) {
                         <td>
                             <span className='moins'>-</span>
                             <span className='nombre'>3</span>
-                            <span className='plus'>+</span>
+                            <span onClick={props.ajout} className='plus'>+</span>
                         </td>
-                        <td>45 <i class="fas fa-euro-sign"></i></td>
+                        <td>{props.argent} <i class="fas fa-euro-sign"></i></td>
                     </tr>
-                    <tr className='align-middle'>
+                    {/* <tr className='align-middle'>
                         <th scope="row">2</th>
                         <td><img src={palmier} alt="" /></td>
                         <td>Magnolia</td>
@@ -59,7 +59,7 @@ export default function Panier(props) {
                             <span className='plus'>+</span>
                         </td>
                         <td>19 <i class="fas fa-euro-sign"></i></td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
             <div className="total">
@@ -71,7 +71,13 @@ export default function Panier(props) {
                     {props.toggleReduction && 
                     <p className='input-group inputReduction'>
                         <input type="text" placeholder='Ecrivez votre code' />
-                        <span className='input-group-text bg-success text-white'><i class="loupe fas fa-search"></i></span>
+                        <span className='input-group-text bg-success text-white'>
+                            <i onClick={ () => {
+                                props.modalReductionOnOf()
+                                props.appliquerReduction()
+                                
+                            }}
+                            class=" choix fas fa-thumbs-up"></i></span>
                     </p>
                     }
 
@@ -79,20 +85,20 @@ export default function Panier(props) {
                 <table className='table montantTotal'>
                     <thead className='table-primary'>
                         <tr>
-                            <th scope="col">Montant total à payer</th>
+                            <th scope="col">Montant total</th>
                             <th scope="col"></th>
-                            <th scope="col">Sans TVA</th>
+                            <th scope="col">Hors TVA</th>
                             <th scope="col"></th>
-                            <th scope="col">Avec TVA 21%</th>
+                            <th scope="col">TVAC 21%</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope='row'></th>
+                            <th scope='row'>à payer</th>
                             <th></th>
-                            <th>245 <i class="fas fa-euro-sign"></i></th>
+                            <th>{props.argentHtva} <i class="fas fa-euro-sign"></i></th>
                             <th></th>
-                            <th className='table-active'>309 <i class="fas fa-euro-sign"></i></th>
+                            <th className='table-active text-danger'>{props.argentTotal} <i class="fas fa-euro-sign"></i></th>
                         </tr>
                     </tbody>
                 </table>

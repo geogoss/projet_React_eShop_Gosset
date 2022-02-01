@@ -7,9 +7,13 @@
     cursor: pointer;
 }
 
+.choix{
+    cursor: pointer;
+}
+
 .montantTotal{
     margin-top: 50px;
-    width: 40% !important;
+    width: 50% !important;
 }
 
 .table img{

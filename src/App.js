@@ -12,6 +12,7 @@ import Fruitiers from "./Categorie/Fruitiers";
 import ModalCompte from "./Components/ModalCompte/ModalCompte";
 import ModalCompte2 from "./Components/ModalCompte/ModalCompte2";
 import Panier from "./Components/Panier/Panier";
+import ModalReduction from "./Components/Panier/ModalReduction";
 
 
 function App() {
@@ -33,9 +34,24 @@ const switchReduction = () => {
   setToggleReduction(!toggleReduction)
 }
 
+// Panier => reduction => modal
+const [toggleModalReduction, setToggleModalReduction] = useState(false)
+const switchModalReduction =() => {
+  setToggleModalReduction(!toggleModalReduction)
+}
+
+
  // Les useState
   // Mon argent
-  const [argent, setArgent] = useState(178)
+  const [argent, setArgent] = useState(25)
+
+  // argent total
+  const [argentTotal, setArgentTotal] = useState(125)
+  const appliquerReduction = () => {
+    setArgentTotal(argentTotal - argentTotal*10/100)
+  }
+    let argentHtva = argentTotal - argentTotal*21/100;
+
 
   // le panier
   const [panier, setPanier] = useState([])
@@ -53,6 +69,7 @@ const switchReduction = () => {
   return (
     <div className="App">
       <div>
+      {toggleModalReduction && <ModalReduction modalReductionOnOf={switchModalReduction} />}
       {toggleCompte && <ModalCompte modalSecondOn={switchCompteSecond} modalOf={switchCompte} />}
       {toggleCompteSecond && <ModalCompte2 modalOf={switchCompteSecond} />}
 
@@ -67,7 +84,7 @@ const switchReduction = () => {
             <Route path="/categorie/arbustes" element={<Arbustes />} />
             <Route path="/categorie/fruitiers" element={<Fruitiers />} />
           </Route>
-          <Route path="/panier" element={<Panier toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
+          <Route path="/panier" element={<Panier appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
         </Routes>
 
       </div>
