@@ -37,7 +37,9 @@
     background-color: rgba(243,241,238,255);
 }
 
-
+.loupe{
+    cursor: pointer;
+}
 
 
 .preNavbar{

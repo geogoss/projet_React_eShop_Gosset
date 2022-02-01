@@ -1,5 +1,5 @@
 
-/* ModalCompte 1 */
+/* ModalCompte 1 et ModalCompte 2 */
 .cadreCompte{
     height:100vh;
     position: absolute;
@@ -22,8 +22,6 @@
 .croix{
     cursor: pointer;
 }
-
-/* ModalCompte 2 */
 
 
 

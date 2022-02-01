@@ -1,8 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
 import "./Navbar.css"
 import { Link, NavLink } from 'react-router-dom';
-import ModalCompte from '../ModalCompte/ModalCompte';
 
 export default function Navbar(props) {
 
@@ -18,20 +16,20 @@ export default function Navbar(props) {
             <div className="preNavbar">
                 <div className="divInput input-group">
                     <input type="text" placeholder='Chercher' />
-                    <span className='input-group-text bg-success text-white'><i class="fas fa-search"></i></span>
+                    <span className='input-group-text bg-success text-white'><i class="loupe fas fa-search"></i></span>
                 </div>
                 <div className="panier">
                     <div className='monCompte bg-success text-white'>
-                    <i class="far fa-user-circle"></i>
-                    <span onClick={props.modalOn} className='ps-2'>Mon Compte</span>
+                        <i class="far fa-user-circle"></i>
+                        <span onClick={props.modalOn} className='ps-2'>Mon Compte</span>
                     </div>
                     <div className='monPanier bg-success text-white'>
-                    <i class="fas fa-list"></i>
-                    <span className='ps-2'>Panier</span>
+                        <i class="fas fa-list"></i>
+                        <span className='ps-2'>Panier</span>
                     </div>
                 </div>
             </div>
-        {/* Partie Navabar du header */}
+            {/* Partie Navabar du header */}
             <div className="divNavbar">
                 <nav class="navbar navbar-light navbar-expand-md">
                     <div class="container">
@@ -45,25 +43,31 @@ export default function Navbar(props) {
 
                         <div class="collapse navbar-collapse" id="monMenuDeroulant">
                             <ul class="navbar-nav">
+
                                 <li class="nav-item">
-                                    <NavLink 
-                                    className={({isActive}) => isActive ? "activeLink" : ""}
-                                    to="/" href="#" class="nav-link active">Accueil</NavLink>
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="/" class="nav-link active">Accueil</NavLink>
                                 </li>
                                 <li class="nav-item">
-                                    <NavLink 
-                                    className={({isActive}) => isActive ? "activeLink" : ""}
-                                    to="seller" href="#" class="nav-link">Best Seller</NavLink>
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="seller" href="#" class="nav-link">Best Seller</NavLink>
                                 </li>
                                 <li class="nav-item">
-                                    <NavLink 
-                                    className={({isActive}) => isActive ? "activeLink" : ""}
-                                    to="cadeaux" href="#" class="nav-link">Idées Cadeaux</NavLink>
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="cadeaux" href="#" class="nav-link">Idées Cadeaux</NavLink>
                                 </li>
                                 <li class="nav-item">
-                                    <NavLink 
-                                    className={({isActive}) => isActive ? "activeLink" : ""}
-                                    to="contact" href="#" class="nav-link">Contact</NavLink>
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="contact" href="#" class="nav-link">Contact</NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="categorie" href="#" class="nav-link">Catégories</NavLink>
                                 </li>
                             </ul>
                         </div>
