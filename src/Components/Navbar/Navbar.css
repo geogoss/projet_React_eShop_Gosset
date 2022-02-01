@@ -92,6 +92,15 @@
     cursor: pointer;   
 }
 
+.monPanier a{
+    text-decoration: none;
+    color: white;
+}
+
+.monPanier a:hover{
+    color: white;
+}
+
 /* La Navbar  */
 
 .divNavbar nav{

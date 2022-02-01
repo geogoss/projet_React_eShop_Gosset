@@ -25,7 +25,7 @@ export default function Navbar(props) {
                     </div>
                     <div className='monPanier bg-success text-white'>
                         <i class="fas fa-list"></i>
-                        <span className='ps-2'>Panier</span>
+                        <Link to="/panier" className='ps-2'>Panier</Link>
                     </div>
                 </div>
             </div>
