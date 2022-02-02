@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import './App.css'
 import Cards from './components/cards/cards'
 
@@ -202,7 +202,7 @@ function App() {
       detail: '40/50 cm pot 1L',
       img: 'https://www.jardins-du-monde.be/2544-thickbox_default/pommier-braeburn.jpg',
       type: 'fruitier'
-    },
+    }
   ])
 
 
@@ -211,12 +211,7 @@ function App() {
   return (
     <div className="App">
       <div className='cardsmap'>
-        {item.map((item) => (<Cards image={item.img} name={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} achat={() => acheter(item)} money={argent} />))}
-      </div>
-      <h3>Panier :</h3>
-      <hr />
-      <div className='buyitem'>
-        {item.map((item) => (<Panier buyimg={item.img} buyname={item.nom} nbr={item.quantite} remettre={() => rendre(item)} />))}
+        {item.map((item) => (<Cards image={item.img} name={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
       </div>
     </div>
 
