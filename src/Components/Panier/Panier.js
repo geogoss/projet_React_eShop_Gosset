@@ -1,13 +1,8 @@
 import React from 'react';
 import "./Panier.css";
-import pin from "../../assets/images/pin.jpg"
-import palmier from "../../assets/images/palmier.jpg"
-import aubepine from "../../assets/images/aubepine.jpg"
 
 
 export default function Panier(props) {
-
-
 
 
     return (
@@ -26,9 +21,9 @@ export default function Panier(props) {
                 <tbody>
                     <tr className='align-middle'>
                         <th scope="row">1</th>
-                        <td><img src={aubepine} alt="" /></td>
-                        <td>Saule</td>
-                        <td>15 </td>
+                        <td><img src={props.img} alt="" /></td>
+                        <td>{props.nom}</td>
+                        <td> {props.prix} </td>
                         <td>
                             <span className='moins'>-</span>
                             <span className='nombre'>3</span>

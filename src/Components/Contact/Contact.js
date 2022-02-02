@@ -85,7 +85,7 @@ export default function Contact() {
           <a href="mailto:info@jardins-du-monde.be">info@jardins-du-monde.be</a>
           <a href="tel:+32 495 44 12 73">+32 (0) 495 44 12 73</a>
         </div>
-        <div className='plan'>
+        <div className='plan m-5'>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2532.368518637878!2d5.461325851140492!3d50.601689479395866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0fed04f5faab1%3A0xa35fe8791a48adf1!2sAv.%20du%20Fort%2051%2C%204400%20Fl%C3%A9malle!5e0!3m2!1sfr!2sbe!4v1643799104021!5m2!1sfr!2sbe" width={400} height={300} style={{ border: 0 }} allowFullScreen loading="lazy" />      </div>
       </aside>
     </section>
