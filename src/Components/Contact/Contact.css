@@ -1,0 +1,72 @@
+
+/* header */
+.texte{
+    background-color: rgb(231, 230, 226);
+}
+
+
+.email{
+    text-decoration: none;
+    color:rgba(25,135,84,255);
+
+}
+
+/* Section */
+section{
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+}
+
+
+
+/* aricle => formulaire */
+
+.formulaire{
+    width: 35%;
+    background-color:rgb(231, 230, 226) ;
+
+} 
+
+form{
+    width: 70%;
+    padding: 15px;
+    border: 1px solid white;
+}
+
+.bouton{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+/* Aside sur coté droit */
+
+aside{
+    background-color:rgb(231, 230, 226) ;
+
+}
+
+.join{
+    display: flex;
+    flex-direction: column;
+}
+
+.join a{
+    text-decoration: none;
+    color: rgba(25,135,84,255);
+
+}
+
+.join a:first-child{
+    margin-bottom: 5px;
+}
+
+
+.plan{
+    border: 3px solid rgba(25,135,84,255);
+    border-radius: 20px;
+    overflow: hidden;
+}

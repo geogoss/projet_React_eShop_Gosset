@@ -117,7 +117,7 @@
 
 /* Pour le NavLink isActive */
 .activeLink{
-    background-color: rgb(52, 100, 52);
+    background-color: rgba(25,135,84,255);
     color: white !important;
     padding: 5px;
     border-radius: 10px;

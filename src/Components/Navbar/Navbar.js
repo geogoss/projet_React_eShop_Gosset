@@ -52,6 +52,11 @@ export default function Navbar(props) {
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="categorie" href="#" class="nav-link">Catégories</NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
                                         to="seller" href="#" class="nav-link">Best Seller</NavLink>
                                 </li>
                                 <li class="nav-item">
@@ -63,11 +68,6 @@ export default function Navbar(props) {
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
                                         to="contact" href="#" class="nav-link">Contact</NavLink>
-                                </li>
-                                <li class="nav-item">
-                                    <NavLink
-                                        className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="categorie" href="#" class="nav-link">Catégories</NavLink>
                                 </li>
                             </ul>
                         </div>

@@ -1,14 +1,14 @@
 import Navbar from "./Components/Navbar/Navbar";
 import {Routes, Route} from 'react-router-dom';
 import { useState } from "react";
-import Accueil from "./Accueil/Accueil";
-import Seller from "./Seller/Seller";
-import Cadeaux from "./Cadeaux/Cadeaux"
-import Contact from "./Contact/Contact";
-import Categorie from "./Categorie/Categorie";
-import Arbres from "./Categorie/Arbres";
-import Arbustes from "./Categorie/Arbustes";
-import Fruitiers from "./Categorie/Fruitiers";
+import Accueil from "./Components/Accueil/Accueil";
+import Seller from "./Components/Seller/Seller";
+import Cadeaux from "./Components/Cadeaux/Cadeaux"
+import Contact from "./Components/Contact/Contact";
+import Categorie from "./Components/Categorie/Categorie";
+import Arbres from "./Components/Categorie/Arbres";
+import Arbustes from "./Components/Categorie/Arbustes";
+import Fruitiers from "./Components/Categorie/Fruitiers";
 import ModalCompte from "./Components/ModalCompte/ModalCompte";
 import ModalCompte2 from "./Components/ModalCompte/ModalCompte2";
 import Panier from "./Components/Panier/Panier";
@@ -17,6 +17,7 @@ import ModalReduction from "./Components/Panier/ModalReduction";
 
 function App() {
 
+  // Geoffrey -----------------------------------------------------------
 // Modal 1 Mon compte
 const [toggleCompte, setToggleCompte] = useState(false)
 const switchCompte = () => {
@@ -40,7 +41,6 @@ const switchModalReduction =() => {
   setToggleModalReduction(!toggleModalReduction)
 }
 
-
  // Les useState
   // Mon argent
   const [argent, setArgent] = useState(25)
@@ -52,18 +52,8 @@ const switchModalReduction =() => {
   }
     let argentHtva = argentTotal - argentTotal*21/100;
 
+    // Nassim ---------------------------------------------------------------------
 
-  // le panier
-  const [panier, setPanier] = useState([])
-
-  // les articles en tant qu'objet dans un tableau pour avoir facile à les récupérer
-  // const [articles, setArticles] = useState([
-  //   { nom: "Crayons de couleur", prix: 15, unite: 4, img: imgCrayon },
-  //   { nom: "Chaise de bureau", prix: 138, unite: 2, img: imgChaise },
-  //   { nom: "Rangement crayons", prix: 42, unite: 3, img: imgPot },
-  //   { nom: "Agenda", prix: 17, unite: 10, img: imgAgenda },
-  //   { nom: "Classeur", prix: 9, unite: 10, img: imgClasseur }
-  // ])
 
 
   return (
