@@ -42,39 +42,80 @@ const switchModalReduction =() => {
 }
 
  // Les useState
+
+
+
   // Mon argent
-  const [argent, setArgent] = useState()
+  const [argent, setArgent] = useState(0)
 
   // argent total
-  const [argentTotal, setArgentTotal] = useState()
+  const [argentTotal, setArgentTotal] = useState(0)
+
+  // réduction avec le code réduction
   const appliquerReduction = () => {
     setArgentTotal(argentTotal - argentTotal*10/100)
   }
+    // prix HTVA
     let argentHtva = argentTotal - argentTotal*21/100;
-
 
   // le panier => un tableau
   const [monPanier, setMonPanier] = useState([])
+
+  // tab avec prix panier
+  const [prixPanier, setPrixPanier] = useState()
+
 
   // Opération acheter
 
   let acheter = (i) => {
     // copie des useState => variables temporaires
     let copieArgentTotal = argentTotal;
-    let copieArgent = argent
-    let copieItem = item;
 
     // Action
-    copieArgentTotal += item[i].prix;
-    copieArgent += item[i].prix
-
+    copieArgentTotal += item[i].prix
+    item[i].panier=1
     monPanier.unshift(item[i]);
+    
 
     // update les useState
     setArgentTotal(copieArgentTotal);
-    setArgent(argent);
 
   };
+
+  // const [argentTotalBis, setArgentTotalBis] = useState()
+  // let plusUn = (i) => {
+  //   let copieArgentTotalBis = argentTotalBis;
+  //   copieArgentTotalBis += item[i].prix
+  //   setArgentTotalBis(copieArgentTotalBis);
+
+  // }
+
+  // const [payementFinal, setPayementFinal] = useState(0)
+  // setPayementFinal(argentTotal + argentTotalBis)
+
+
+  let revendre = (i) => {
+    // copie des useState => variables temporaires
+    let copieMonPanier = monPanier;
+    let copieArgentTotal = argentTotal;
+
+    // action
+    copieArgentTotal -= item[item.indexOf(monPanier[i])].prix;
+    monPanier.splice(i, 1);
+
+    // update les useState
+    setMonPanier(copieMonPanier);
+    setArgentTotal(copieArgentTotal);
+
+  };
+
+  const essai = (nbr) => {
+    setArgentTotal(argentTotal + nbr)
+  } 
+  const essaimoins = (nbr) => {
+    setArgentTotal(argentTotal - nbr)
+  } 
+
 
 
 
@@ -84,6 +125,7 @@ const switchModalReduction =() => {
       {
         nom: 'Érable de Cappadoce',
         prix: 6.78,
+        argent: 6.78,
         latin: 'Acer Cappadocicum',
         detail: '60/80 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/1802-thickbox_default/erable-de-cappadoce.jpg',
@@ -92,6 +134,7 @@ const switchModalReduction =() => {
       {
         nom: "Copalme d'Amérique",
         prix: 7.59,
+        argent: 7.59,
         latin: 'Liquidambar styraciflua',
         detail: '70/80 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/358-thickbox_default/copalme-d-amerique.jpg',
@@ -100,6 +143,7 @@ const switchModalReduction =() => {
       {
         nom: 'Magnolia de Kobé',
         prix: 7.75,
+        argent: 7.75,
         latin: 'Magnolia Kobus',
         detail: '70/80cm pot 1L5',
         img: 'https://www.jardins-du-monde.be/2856-thickbox_default/magnolia-de-kobe.jpg',
@@ -108,6 +152,7 @@ const switchModalReduction =() => {
       {
         nom: 'Bouleau pleureur de Young',
         prix: 9.99,
+        argent: 9.99,
         latin: 'Betula Pendula Youngli',
         detail: '80/100cm pot 1L5',
         img: 'https://www.jardins-du-monde.be/3239-thickbox_default/bouleau-pleureur-de-young.jpg',
@@ -116,6 +161,7 @@ const switchModalReduction =() => {
       {
         nom: "Bouleau blanc de l'Himalaya",
         prix: 9.99,
+        argent: 9.99,
         latin: 'Betula Utilis Jacquemontii',
         detail: '50/60 cm pot 1L5',
         img: 'https://www.jardins-du-monde.be/3279-thickbox_default/bouleau-blanc-de-l-himalaya.jpg',
@@ -124,6 +170,7 @@ const switchModalReduction =() => {
       {
         nom: 'Charme Houblon',
         prix: 6.99,
+        argent: 6.99,
         latin: 'Ostrya Carpinifolia',
         detail: '50/60 cm pot 1L5',
         img: 'https://www.jardins-du-monde.be/2002-thickbox_default/charme-houblon.jpg',
@@ -132,6 +179,7 @@ const switchModalReduction =() => {
       {
         nom: "Copalme d'Amérique ",
         prix: 6.99,
+        argent: 6.99,
         latin: 'Liquidambar Styraciflua Worplesdon',
         detail: '40/45 cm P9',
         img: 'https://www.jardins-du-monde.be/2262-thickbox_default/copalme-d-amerique-worplesdon.jpg',
@@ -140,6 +188,7 @@ const switchModalReduction =() => {
       {
         nom: 'Tileul de Mongolie',
         prix: 26.00,
+        argent: 26.00,
         latin: 'Tilia mongolica',
         detail: '120/130 cm pot 2L',
         img: 'https://www.jardins-du-monde.be/3850-thickbox_default/tilleul-de-mongolie.jpg',
@@ -151,6 +200,7 @@ const switchModalReduction =() => {
       {
         nom: 'Magnolia étoilé',
         prix: 7.55,
+        argent: 7.55,
         latin: 'Magnolia kobus Stelatta',
         detail: '60/70 cm P9',
         img: 'https://www.jardins-du-monde.be/1752-thickbox_default/magnolia-etoile.jpg',
@@ -159,6 +209,7 @@ const switchModalReduction =() => {
       {
         nom: 'Magnolia de Kobé',
         prix: 7.75,
+        argent: 7.75,
         latin: 'Magnolia Kobus',
         detail: '60/70cm P9',
         img: 'https://www.jardins-du-monde.be/2856-thickbox_default/magnolia-de-kobe.jpg',
@@ -167,6 +218,7 @@ const switchModalReduction =() => {
       {
         nom: 'Magnolia Loeberni Leonard',
         prix: 6.89,
+        argent: 6.89,
         latin: 'Magnolia Loeberni Leonard Messel',
         detail: '50/60 pot Ø 12cm',
         img: 'https://www.jardins-du-monde.be/683-thickbox_default/magnolia-loebneri-leonard-messel.jpg',
@@ -175,6 +227,7 @@ const switchModalReduction =() => {
       {
         nom: 'Cornouiller',
         prix: 6.99,
+        argent: 6.99,
         latin: 'Cornus Mas',
         detail: '50/60 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/1552-thickbox_default/cornouiller.jpg',
@@ -183,6 +236,7 @@ const switchModalReduction =() => {
       {
         nom: 'Cognassier du Japon',
         prix: 6.25,
+        argent: 6.25,
         latin: 'Chaenomeles Japonica',
         detail: '40/60 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/2881-thickbox_default/cognassier-du-japon.jpg',
@@ -191,6 +245,7 @@ const switchModalReduction =() => {
       {
         nom: 'Weigelia panaché nain',
         prix: 6.15,
+        argent: 6.15,
         latin: 'Weigela Florida Nana Variegata',
         detail: '40/60 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/578-thickbox_default/weigelia-panache-nain.jpg',
@@ -199,6 +254,7 @@ const switchModalReduction =() => {
       {
         nom: 'Deutzie Gracilis',
         prix: 5.31,
+        argent: 5.31,
         latin: 'Deutzie Gracilis',
         detail: '40/50 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/485-thickbox_default/deutzia-gracilis.jpg',
@@ -207,6 +263,7 @@ const switchModalReduction =() => {
       {
         nom: 'Seringat Snowbelle',
         prix: 6.25,
+        argent: 6.25,
         latin: 'Philadelphus virginalis Snowbelle',
         detail: '40/60 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/3116-thickbox_default/seringat-snowbelle.jpg',
@@ -217,6 +274,7 @@ const switchModalReduction =() => {
       {
         nom: 'Arbre aux haricots bleus',
         prix: 17.99,
+        argent: 17.99,
         latin: 'Decaisnea Fargesii',
         detail: '70/80 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/1503-thickbox_default/arbre-aux-haricots-bleus.jpg',
@@ -225,6 +283,7 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Elstar',
         prix: 9.59,
+        argent: 9.59,
         latin: 'Malus domestica Elstar',
         detail: '50/60 cm pot 1L (plant greffé)',
         img: 'https://www.jardins-du-monde.be/2549-thickbox_default/pommier-elstar.jpg',
@@ -233,6 +292,7 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Fiesta® ',
         prix: 9.99,
+        argent: 9.99,
         latin: 'Malus domestica Fiesta',
         detail: '60/80cm pot 1L (plant greffé)',
         img: 'https://www.jardins-du-monde.be/1605-thickbox_default/pommier-fiesta.jpg',
@@ -241,6 +301,7 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Granny Smith',
         prix: 9.59,
+        argent: 9.59,
         latin: 'Malus domestica Granny Smith',
         detail: '50/60 cm 1L (plant greffé)',
         img: 'https://www.jardins-du-monde.be/1636-thickbox_default/pommier-granny-smith.jpg',
@@ -249,6 +310,7 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Greensleeves',
         prix: 9.59,
+        argent: 9.59,
         latin: 'Malus domestica Greensleeves',
         detail: '50/60 cm 1L (plant greffé)',
         img: 'https://www.jardins-du-monde.be/1733-thickbox_default/pommier-greensleeves.jpg',
@@ -257,6 +319,7 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Red Devil',
         prix: 12.99,
+        argent: 12.99,
         latin: 'Malus domestica Red Devil',
         detail: '50/60 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/2551-thickbox_default/pommier-red-devil.jpg',
@@ -265,6 +328,7 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Santana®',
         prix: 14.59,
+        argent: 14.59,
         latin: 'Malus domestica Santana®',
         detail: '70/80 cm en pot 1L',
         img: 'https://www.jardins-du-monde.be/2123-thickbox_default/pommier-santana.jpg',
@@ -273,12 +337,16 @@ const switchModalReduction =() => {
       {
         nom: 'Pommier Braeburn',
         prix: 9.59,
+        argent: 9.59,
         latin: 'Malus domestica Braeburn',
         detail: '40/50 cm pot 1L',
         img: 'https://www.jardins-du-monde.be/2544-thickbox_default/pommier-braeburn.jpg',
         type: 'fruitier'
       }
     ])
+
+
+    
 
 
   return (
@@ -290,7 +358,7 @@ const switchModalReduction =() => {
 
       <Navbar modalOn={switchCompte} />
         <Routes>
-          <Route path="/" element={<Accueil item={item} />} />
+          <Route path="/" element={<Accueil acheter={acheter} item={item} />} />
           <Route path="/seller" element={<Seller />} />
           <Route path="/cadeaux" element={<Cadeaux />} />
           <Route path="/contact" element={<Contact />} />
@@ -299,10 +367,9 @@ const switchModalReduction =() => {
             <Route path="/categorie/arbustes" element={<Arbustes />} />
             <Route path="/categorie/fruitiers" element={<Fruitiers />} />
           </Route>
-          <Route path="/panier" element={
-          <Panier prix={item[0].prix} nom={item[0].nom} img={item[0].img} appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
+            <Route path="/panier" element={<Panier essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
+          
         </Routes>
-
       </div>
     </div>
   );

@@ -1,9 +1,37 @@
 import React from 'react';
+import { useState } from 'react';
 import "./Panier.css";
-
+import PanierAjout from "./PanierAjout";
+import { useNavigate } from 'react-router-dom';
 
 export default function Panier(props) {
 
+    const navigate = useNavigate()
+
+
+    const augmente = (el) => {
+        el.panier += 1
+        props.essai(el.prix)
+        navigate("/panier")
+
+    }
+
+    const diminue = (el) => {
+        if (el.panier>1) {
+            el.panier -= 1
+        props.essaiMoins(el.prix)
+        navigate("/panier")
+        }
+
+    }
+
+    // const [payement, setPayement] = useState(0)
+
+    // let sum = 0;
+
+    // for (let i = 0; i < props.PrixPanier.length; i++) {
+    //     sum += props.PrixPanier[i];
+    // }
 
     return (
         <div className='cadrePanier w-50 mx-auto'>
@@ -19,42 +47,8 @@ export default function Panier(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr className='align-middle'>
-                        <th scope="row">1</th>
-                        <td><img src={props.img} alt="" /></td>
-                        <td>{props.nom}</td>
-                        <td> {props.prix} </td>
-                        <td>
-                            <span className='moins'>-</span>
-                            <span className='nombre'>3</span>
-                            <span onClick={props.ajout} className='plus'>+</span>
-                        </td>
-                        <td>{props.argent} <i class="fas fa-euro-sign"></i></td>
-                    </tr>
-                    {/* <tr className='align-middle'>
-                        <th scope="row">2</th>
-                        <td><img src={palmier} alt="" /></td>
-                        <td>Magnolia</td>
-                        <td>54</td>
-                        <td>
-                            <span className='moins'>-</span>
-                            <span className='nombre'>2</span>
-                            <span className='plus'>+</span>
-                        </td>
-                        <td>108 <i class="fas fa-euro-sign"></i></td>
-                    </tr>
-                    <tr className='align-middle'>
-                        <th scope="row">3</th>
-                        <td><img src={pin} alt="" /></td>
-                        <td>Chêne</td>
-                        <td>19 </td>
-                        <td>
-                            <span className='moins'>-</span>
-                            <span className='nombre'>1</span>
-                            <span className='plus'>+</span>
-                        </td>
-                        <td>19 <i class="fas fa-euro-sign"></i></td>
-                    </tr> */}
+                    {props.panier.map((item, i) => (<PanierAjout key={i} diminue={() => diminue(item)} incr={() => augmente(item)} panier={item.panier} essaiMoins={props.essaiMoins} essai={props.essai} argentTotal={props.argentTotal.toFixed(2)} achat={() => { props.acheter(i) }} argent={item.argent} img={item.img} nom={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
+
                 </tbody>
             </table>
             <div className="total">
@@ -63,17 +57,17 @@ export default function Panier(props) {
                         <input onClick={props.reductionOnOf} type="checkbox" name="reduction" className='form-check-input' />
                         <label className='form-check-label' htmlFor="reduction">J'ai un bon de réduction</label>
                     </p>
-                    {props.toggleReduction && 
-                    <p className='input-group inputReduction'>
-                        <input type="text" placeholder='Ecrivez votre code' />
-                        <span className='input-group-text bg-success text-white'>
-                            <i onClick={ () => {
-                                props.modalReductionOnOf()
-                                props.appliquerReduction()
-                                
-                            }}
-                            class=" choix fas fa-thumbs-up"></i></span>
-                    </p>
+                    {props.toggleReduction &&
+                        <p className='input-group inputReduction'>
+                            <input type="text" placeholder='Ecrivez votre code' />
+                            <span className='input-group-text bg-success text-white'>
+                                <i onClick={() => {
+                                    props.modalReductionOnOf()
+                                    props.appliquerReduction()
+
+                                }}
+                                    class=" choix fas fa-thumbs-up"></i></span>
+                        </p>
                     }
 
                 </div>
@@ -91,9 +85,9 @@ export default function Panier(props) {
                         <tr>
                             <th scope='row'>à payer</th>
                             <th></th>
-                            <th>{props.argentHtva} <i class="fas fa-euro-sign"></i></th>
+                            <th>{props.argentHtva.toFixed(2)} <i class="fas fa-euro-sign"></i></th>
                             <th></th>
-                            <th className='table-active text-danger'>{props.argentTotal} <i class="fas fa-euro-sign"></i></th>
+                            <th className='table-active text-danger'>{props.argentTotal.toFixed(2)} <i class="fas fa-euro-sign"></i></th>
                         </tr>
                     </tbody>
                 </table>
