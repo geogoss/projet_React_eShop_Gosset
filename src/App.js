@@ -87,7 +87,7 @@ const switchModalReduction =() => {
 
   };
 
-
+// fonction pour supprimer des éléments du tableau panier
   let supprimer = (i) => {
     // copie des useState => variables temporaires
     let copieMonPanier = monPanier;
@@ -100,6 +100,7 @@ const switchModalReduction =() => {
 
   };
 
+  // Fonction pour que l'argent total soit en phase avec argent(prix element)
   const essai = (nbr) => {
     setArgentTotal(argentTotal + nbr)
   } 
@@ -107,7 +108,7 @@ const switchModalReduction =() => {
     setArgentTotal(argentTotal - nbr)
   } 
 
-
+    
 
 
     // Nassim ---------------------------------------------------------------------
@@ -355,8 +356,8 @@ const switchModalReduction =() => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/categorie" element={<Categorie />}>
             <Route path="/categorie/arbres" element={<Arbres acheter={acheter} item={item} />} />
-            <Route path="/categorie/arbustes" element={<Arbustes />} />
-            <Route path="/categorie/fruitiers" element={<Fruitiers />} />
+            <Route path="/categorie/arbustes" element={<Arbustes acheter={acheter} item={item} />} />
+            <Route path="/categorie/fruitiers" element={<Fruitiers acheter={acheter} item={item} />} />
           </Route>
             <Route path="/panier" element={<Panier supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
         </Routes>

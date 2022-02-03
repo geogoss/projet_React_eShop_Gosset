@@ -25,7 +25,7 @@ function Cards(props) {
                                 setOpenModal(true);
                             }}>
                                 <i class="fas fa-shopping-cart"> </i></button>
-                            {modalOpen && <ModalPanier setOpenModal={setOpenModal}/>}
+                            {modalOpen && <ModalPanier name={props.name} setOpenModal={setOpenModal}/>}
                         </div>
                     </div>
                 </div>
