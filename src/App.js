@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css'
 import Cards from './components/cards/cards'
-import Footer from './components/footer'
+import Footer from './components/footer/footer'
 
 function App() {
 
@@ -211,10 +211,12 @@ function App() {
     <div className="App">
       <div className='cardsmap'>
         {item.map((item) => (<Cards image={item.img} name={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
-      </div>
+      </div><button className="openModalBtn" onClick={() => { setModalOpen(true); }}>
+        panier
+      </button>
+      {modalOpen && <Modal setOpenModal={setModalOpen} />}
       <Footer />
     </div>
-
   );
 }
 

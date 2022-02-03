@@ -14,10 +14,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 
 ReactDOM.render(
-  <React.StrictMode>
     <BrowserRouter>
       <App />
-    </BrowserRouter>
-  </React.StrictMode>,
+    </BrowserRouter>,
   document.getElementById('root')
 );
