@@ -13,9 +13,14 @@ import ModalCompte from "./Components/ModalCompte/ModalCompte";
 import ModalCompte2 from "./Components/ModalCompte/ModalCompte2";
 import Panier from "./Components/Panier/Panier";
 import ModalReduction from "./Components/Panier/ModalReduction";
+import Footer from "./Components/Footer/footer";
 
 
 function App() {
+
+  //Modal pop up du panier
+  const[modalOpen, setModalOpen] = useState(false);
+
 
   // Geoffrey -----------------------------------------------------------
 // Modal 1 Mon compte
@@ -82,30 +87,16 @@ const switchModalReduction =() => {
 
   };
 
-  // const [argentTotalBis, setArgentTotalBis] = useState()
-  // let plusUn = (i) => {
-  //   let copieArgentTotalBis = argentTotalBis;
-  //   copieArgentTotalBis += item[i].prix
-  //   setArgentTotalBis(copieArgentTotalBis);
 
-  // }
-
-  // const [payementFinal, setPayementFinal] = useState(0)
-  // setPayementFinal(argentTotal + argentTotalBis)
-
-
-  let revendre = (i) => {
+  let supprimer = (i) => {
     // copie des useState => variables temporaires
     let copieMonPanier = monPanier;
-    let copieArgentTotal = argentTotal;
-
+    console.log(copieMonPanier);
     // action
-    copieArgentTotal -= item[item.indexOf(monPanier[i])].prix;
-    monPanier.splice(i, 1);
+    copieMonPanier.splice(i, 1);
 
     // update les useState
     setMonPanier(copieMonPanier);
-    setArgentTotal(copieArgentTotal);
 
   };
 
@@ -363,13 +354,16 @@ const switchModalReduction =() => {
           <Route path="/cadeaux" element={<Cadeaux />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/categorie" element={<Categorie />}>
-            <Route path="/categorie/arbres" element={<Arbres />} />
+            <Route path="/categorie/arbres" element={<Arbres acheter={acheter} item={item} />} />
             <Route path="/categorie/arbustes" element={<Arbustes />} />
             <Route path="/categorie/fruitiers" element={<Fruitiers />} />
           </Route>
-            <Route path="/panier" element={<Panier essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
-          
+            <Route path="/panier" element={<Panier supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
         </Routes>
+      </div>
+      <div>
+      <Footer/>
+
       </div>
     </div>
   );

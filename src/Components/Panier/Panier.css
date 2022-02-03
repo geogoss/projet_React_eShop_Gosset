@@ -36,3 +36,17 @@
 .inputReduction{
     margin-top: 5px;
 }
+
+.panierAjoutContent{
+    position: relative;
+}
+
+.croixPanier{
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    cursor: pointer;
+}
+
+
+

@@ -5,7 +5,6 @@ import { Link, Outlet, NavLink } from 'react-router-dom';
 export default function Categorie(props) {
     return (
         <div className='cadreCategorie'>
-            <Outlet />
             <nav>
                 <ul className="liste">
                     <li>
@@ -25,6 +24,7 @@ export default function Categorie(props) {
                     </li>
                 </ul>
             </nav>
+            <Outlet />
         </div>
     );
 }

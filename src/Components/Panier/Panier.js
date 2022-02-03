@@ -47,7 +47,7 @@ export default function Panier(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.panier.map((item, i) => (<PanierAjout key={i} diminue={() => diminue(item)} incr={() => augmente(item)} panier={item.panier} essaiMoins={props.essaiMoins} essai={props.essai} argentTotal={props.argentTotal.toFixed(2)} achat={() => { props.acheter(i) }} argent={item.argent} img={item.img} nom={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
+                    {props.panier.map((item, i) => (<PanierAjout key={i} supprimer={() => props.supprimer(i)} diminue={() => diminue(item)} incr={() => augmente(item)} panier={item.panier} essaiMoins={props.essaiMoins} essai={props.essai} argentTotal={props.argentTotal.toFixed(2)} achat={() => { props.acheter(i) }} argent={item.argent} img={item.img} nom={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
 
                 </tbody>
             </table>

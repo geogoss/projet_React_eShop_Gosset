@@ -1,6 +1,9 @@
 import './cards.css'
+import React, {useState} from "react";
+import ModalPanier from "../ModalPanier/ModalPanier";
 
 function Cards(props) {
+    const[modalOpen, setOpenModal] = useState(false)
     return (
         <div>
             <div className="allArticle">
@@ -17,7 +20,12 @@ function Cards(props) {
                         </div>
                         <div className='payement'>
                             <p className='prix'>Prix : {props.prix}€</p>
-                            <button onClick={props.achat}><i class="fas fa-shopping-cart"> </i></button>
+                            <button className='openModalBtn' onClick={() => {
+                                props.achat()
+                                setOpenModal(true);
+                            }}>
+                                <i class="fas fa-shopping-cart"> </i></button>
+                            {modalOpen && <ModalPanier setOpenModal={setOpenModal}/>}
                         </div>
                     </div>
                 </div>
