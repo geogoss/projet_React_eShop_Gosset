@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css'
 import Cards from './components/cards/cards'
+import Footer from './components/footer'
 
 function App() {
 
@@ -206,13 +207,12 @@ function App() {
   ])
 
 
-
-
   return (
     <div className="App">
       <div className='cardsmap'>
         {item.map((item) => (<Cards image={item.img} name={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
       </div>
+      <Footer />
     </div>
 
   );
