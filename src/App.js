@@ -15,7 +15,8 @@ import Panier from "./Components/Panier/Panier";
 import ModalReduction from "./Components/Panier/ModalReduction";
 import Footer from "./Components/Footer/footer";
 import { useNavigate } from "react-router-dom";
-import Detail from "./Components/Accueil/Detail"
+import Detail from "./Components/Accueil/Detail";
+import ModalPayer from "./Components/Panier/ModalPayer";
 
 
 function App() {
@@ -33,8 +34,14 @@ const switchCompte = () => {
 // Modal 2 Mon compte
 const [toggleCompteSecond, setToggleCompteSecond] = useState(false)
 const switchCompteSecond = () => {
-    setToggleCompteSecond(!toggleCompteSecond)
+  setToggleCompteSecond(!toggleCompteSecond)
 }
+// Modal Payer => Panier
+const [togglePayer, setTogglePayer] = useState(false)
+const switchPayer = () => {
+    setTogglePayer(!togglePayer)
+}
+
 
 // Panier => toggle bouton reduction
 const [toggleReduction, setToggleReduction] = useState(false)
@@ -48,59 +55,74 @@ const switchModalReduction =() => {
   setToggleModalReduction(!toggleModalReduction)
 }
 
- // Les useState
+// Les useState
 
 
 
-  // Mon argent
-  const [argent, setArgent] = useState(0)
+// Mon argent
+const [argent, setArgent] = useState(0)
 
-  // argent total
-  const [argentTotal, setArgentTotal] = useState(0)
+// argent total
+const [argentTotal, setArgentTotal] = useState(0)
 
-  // réduction avec le code réduction
-  const appliquerReduction = () => {
-    setArgentTotal(argentTotal - argentTotal*10/100)
-  }
-    // prix HTVA
-    let argentHtva = argentTotal - argentTotal*21/100;
+// réduction avec le code réduction
+const appliquerReduction = () => {
+  setArgentTotal(argentTotal - argentTotal*10/100)
+}
+// prix HTVA
+let argentHtva = argentTotal - argentTotal*21/100;
 
-  // le panier => un tableau
-  const [monPanier, setMonPanier] = useState([])
+// le panier => un tableau
+const [monPanier, setMonPanier] = useState([])
 
-  // tab avec prix panier
-  const [prixPanier, setPrixPanier] = useState()
+// tab avec prix panier
+const [prixPanier, setPrixPanier] = useState()
 
 
-  // Opération acheter
+// Opération acheter
 
-  let acheter = (i) => {
-    // copie des useState => variables temporaires
-    let copieArgentTotal = argentTotal;
+let acheter = (i) => {
+  // copie des useState => variables temporaires
+  let copieArgentTotal = argentTotal;
+  
+  // Action
+  copieArgentTotal += item[i].prix
+  item[i].panier=1
+  monPanier.unshift(item[i]);
+  
+  
+  // update les useState
+  setArgentTotal(copieArgentTotal);
+  
+};
 
-    // Action
-    copieArgentTotal += item[i].prix
-    item[i].panier=1
-    monPanier.unshift(item[i]);
+// Pour supprimer un panier
+const navigate = useNavigate()
+let supprimer = (i) => {
+  // copie des useState => variables temporaires
+  let copieMonPanier = monPanier;
+  // action
+  copieMonPanier.splice(i, 1);
+  
+  // update les useState
+  setMonPanier(copieMonPanier);
+  navigate("/panier")
+};
+
+// Pour supprimer tous les panier => bouton payer dans modal
+const viderPanier = () => {
+  // copie des useState => variables temporaires
+  let copieMonPanier = monPanier;
+  let copieArgentTotal = argentTotal;
+  // action
+  copieMonPanier.splice(0, copieMonPanier.length);
+  copieArgentTotal = 0 
+  // update les useState
+  setMonPanier(copieMonPanier);
+  setArgentTotal(copieArgentTotal);
     
+}
 
-    // update les useState
-    setArgentTotal(copieArgentTotal);
-
-  };
-
-  const navigate = useNavigate()
-
-  let supprimer = (i) => {
-    // copie des useState => variables temporaires
-    let copieMonPanier = monPanier;
-    // action
-    copieMonPanier.splice(i, 1);
-
-    // update les useState
-    setMonPanier(copieMonPanier);
-    navigate("/panier")
-  };
 
   const essai = (nbr) => {
     setArgentTotal(argentTotal + nbr)
@@ -369,6 +391,7 @@ const switchModalReduction =() => {
       {toggleModalReduction && <ModalReduction modalReductionOnOf={switchModalReduction} />}
       {toggleCompte && <ModalCompte modalSecondOn={switchCompteSecond} modalOf={switchCompte} />}
       {toggleCompteSecond && <ModalCompte2 modalOf={switchCompteSecond} />}
+      {togglePayer && <ModalPayer viderPanier={viderPanier} modalPayerOf={switchPayer} />}
 
       <Navbar resetMonChoix={resetMonChoix} setText={setText}  text={text.text} modalOn={switchCompte} />
         <Routes>
@@ -382,7 +405,7 @@ const switchModalReduction =() => {
             <Route path="/categorie/arbustes" element={<Arbustes element={element} acheter={acheter} item={item} />} />
             <Route path="/categorie/fruitiers" element={<Fruitiers element={element} acheter={acheter} item={item} />} />
           </Route>
-            <Route path="/panier" element={<Panier supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
+            <Route path="/panier" element={<Panier modalPayerOn={switchPayer} supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
         </Routes>
       </div>
       <div>

@@ -97,7 +97,7 @@ export default function Panier(props) {
 
             </div>
             <div className='text-end'>
-                <button className='btn btn-success '>Payer</button>
+                <button onClick={props.modalPayerOn} className='btn btn-success '>Payer</button>
             </div>
         </div>
     );
