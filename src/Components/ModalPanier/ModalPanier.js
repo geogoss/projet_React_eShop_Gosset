@@ -12,7 +12,7 @@ function ModalPanier(props) {
             onClick={() => {
               props.setOpenModal(false);
             }}
-          >x</button>
+          >Fermer</button>
         </div>
 
         <div className="title">

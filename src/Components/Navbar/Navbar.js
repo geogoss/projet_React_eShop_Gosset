@@ -38,7 +38,7 @@ export default function Navbar({text, setText, modalOn, resetMonChoix}) {
                         <span onClick={modalOn} className='ps-2'>Mon Compte</span>
                     </div>
                     <div className='monPanier bg-success text-white'>
-                        <i class="fas fa-list"></i>
+                    <i class="fas fa-shopping-basket"></i>
                         <Link to="/panier" className='ps-2'>Panier</Link>
                     </div>
                 </div>
@@ -48,7 +48,7 @@ export default function Navbar({text, setText, modalOn, resetMonChoix}) {
                 <nav class="navbar navbar-light navbar-expand-md">
                     <div class="container">
                         <div id='jardin' class="navbar-brand">
-                            Jardin du Monde
+                            Jardin d'Eden
                         </div>
                         {/* <!-- Le bouton s'affichera en petit écran --> */}
                         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#monMenuDeroulant">
@@ -61,32 +61,32 @@ export default function Navbar({text, setText, modalOn, resetMonChoix}) {
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="/" class="nav-link active">Accueil</NavLink>
+                                        to="/" class="nav-link active">Home <i class="fas fa-home"></i></NavLink>
                                 </li>
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="categorie" href="#" class="nav-link">Catégories</NavLink>
+                                        to="categorie" href="#" class="nav-link">Catégories <i class="fas fa-align-justify"></i></NavLink>
                                 </li>
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="seller" href="#" class="nav-link">Best Seller</NavLink>
+                                        to="seller" href="#" class="nav-link">18+  <i class="fas fa-exclamation-triangle"></i></NavLink>
                                 </li>
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="contact" href="#" class="nav-link">Contact</NavLink>
+                                        to="contact" href="#" class="nav-link">Contact <i class="fas fa-voicemail"></i></NavLink>
                                 </li>
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="detail" href="#" class="nav-link">Détails</NavLink>
+                                        to="detail" href="#" class="nav-link">Détail <i class="far fa-address-card"></i></NavLink>
                                 </li>
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="admin" href="#" class="nav-link">Admin</NavLink>
+                                        to="admin" href="#" class="nav-link">Admin <i class="fas fa-user-cog"></i></NavLink>
                                 </li>
                             </ul>
                         </div>

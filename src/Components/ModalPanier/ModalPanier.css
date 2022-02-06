@@ -1,14 +1,10 @@
-.modalBackground { 
+.modalBackground {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   z-index: 1;
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0; 
 }
 
 .modalContainer {
@@ -34,13 +30,18 @@
 }
 
 .titleCloseBtn button {
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  font-size: 25px;
+  color: black;
+  font-size: small;
+  background-color: none;
   cursor: pointer;
+}
+
+.title {
+  color: rgb(117, 161, 73);
+}
+
+.msg {
+  font-size: 1.25rem;
 }
 
 .modalContainer .body {
@@ -72,7 +73,8 @@
 }
 
 #cancelBtn {
-  background-color: rgb(85, 2, 2);
+  background-color: rgb(163, 22, 22);
+  font-size: small;
 }
 
 .footer button:first-child{

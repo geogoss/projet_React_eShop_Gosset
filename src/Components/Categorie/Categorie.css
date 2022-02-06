@@ -11,8 +11,7 @@
     align-items: flex-start;
     font-size: 40px;
     margin-top: 60px;
-    
-
+    margin-bottom: 250px;
 }
 .liste li{
     padding: 10px;
@@ -30,4 +29,4 @@
 .listeBis{
     color: rgb(52, 100, 52);
 }
-   
+

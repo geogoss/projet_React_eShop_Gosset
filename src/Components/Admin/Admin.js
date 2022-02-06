@@ -4,9 +4,12 @@ import Input from '../../Components/UI/Input/Input'
 import classes from './Admin.module.css';
 import axios from '../config/axios-firebase';
 import Routes from '../../App'
+import { useNavigate } from 'react-router-dom';
 
 function Admin(props) {
 
+
+  const navigate = useNavigate()
   //States input
   const [inputs, setInputs] = useState({
     titre: {

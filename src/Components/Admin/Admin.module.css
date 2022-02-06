@@ -5,6 +5,7 @@
     margin: auto;
     border-radius: 5px;
     text-align: right;
+    margin-bottom: 50px;
 }
 
 
@@ -26,7 +27,6 @@
 h1{
     text-align: center;
     padding: 10px 15px;
-    background-color: #d3e0ea;
 }
 
 .submit input:disabled{

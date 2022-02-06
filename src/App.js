@@ -21,11 +21,11 @@ import ModalPayer from "./Components/Panier/ModalPayer";
 
 function App() {
 
-  //Modal pop up du panier
-  const[modalOpen, setModalOpen] = useState(false);
 
 
   // Geoffrey -----------------------------------------------------------
+
+  // Les Toggle
 // Modal 1 Mon compte
 const [toggleCompte, setToggleCompte] = useState(false)
 const switchCompte = () => {
@@ -41,24 +41,19 @@ const [togglePayer, setTogglePayer] = useState(false)
 const switchPayer = () => {
     setTogglePayer(!togglePayer)
 }
-
-
 // Panier => toggle bouton reduction
 const [toggleReduction, setToggleReduction] = useState(false)
 const switchReduction = () => {
   setToggleReduction(!toggleReduction)
 }
-
 // Panier => reduction => modal
 const [toggleModalReduction, setToggleModalReduction] = useState(false)
 const switchModalReduction =() => {
   setToggleModalReduction(!toggleModalReduction)
 }
 
+
 // Les useState
-
-
-
 // Mon argent
 const [argent, setArgent] = useState(0)
 
@@ -75,26 +70,30 @@ let argentHtva = argentTotal - argentTotal*21/100;
 // le panier => un tableau
 const [monPanier, setMonPanier] = useState([])
 
-// tab avec prix panier
-const [prixPanier, setPrixPanier] = useState()
-
 
 // Opération acheter
-
 let acheter = (i) => {
   // copie des useState => variables temporaires
   let copieArgentTotal = argentTotal;
-  
   // Action
   copieArgentTotal += item[i].prix
   item[i].panier=1
   monPanier.unshift(item[i]);
-  
-  
   // update les useState
   setArgentTotal(copieArgentTotal);
-  
 };
+
+let acheterCactus = (i) => {
+  // copie des useState => variables temporaires
+  let copieArgentTotal = argentTotal;
+  // Action
+  copieArgentTotal += cactus[i].prix
+  cactus[i].panier=1
+  monPanier.unshift(cactus[i]);
+  // update les useState
+  setArgentTotal(copieArgentTotal);
+};
+
 
 // Pour supprimer un panier
 const navigate = useNavigate()
@@ -131,26 +130,34 @@ const viderPanier = () => {
     setArgentTotal(argentTotal - nbr)
   } 
 
+  // Donnée pour récupérer le type (arbre, arbuste ou fruitier) au click du titre dans catégorie
+  // fonction qui récupère la donnée pour faire le map avec item.type.map.include
   const [element, setElement] = useState('');
   const changeElement = newElement => {
     setElement(newElement)
   }
 
+    // Donnée pour récupérer le nom de la card au click du titre sur la photo d'une card
+      // fonction qui récupère la donnée pour faire le map avec item.type.map.include 
+      // et afficher la carte du nom de input
   const [monChoix, setMonChoix] = useState('rien');
   const changeMonChoix = newChoix => {
     newChoix = newChoix
     setMonChoix(newChoix);
   }
 
+  // fonction pour reset le choix quand on fait appel à l'input
   const resetMonChoix = () => {
     setMonChoix('rien')
   }
 
-
+  // Donnée dans laquel on va récupérer l'input
   const [text, setText] = useState(
     {text: "Choisissez une carte dans Accueil pour avoir des détails"}
   )
   
+    // fonction pour reset le map de l'input quand on fait appel au click sur une carte
+    // et qui remet la phrase text
   const resetText = () => {
     setText({text: "Choisissez une carte dans Accueil pour avoir des détails"})
   }
@@ -213,7 +220,7 @@ const viderPanier = () => {
         type: 'arbre'
       },
       {
-        nom: "Copalme d'Amérique ",
+        nom: "Copalme d'Europe ",
         prix: 6.99,
         argent: 6.99,
         latin: 'Liquidambar Styraciflua Worplesdon',
@@ -381,6 +388,33 @@ const viderPanier = () => {
       }
     ])
 
+    const [cactus, setCactus] = useState([
+      {
+        nom: 'Chaudasse non-binaire',
+        prix: 99.99,
+        latin: 'Meretrix',
+        detail: 'Pack premium 170cm 65kg',
+        img: 'https://image.freepik.com/photos-gratuite/jeune-femme-sexy-robe-blanche-allongee-tronc-arbre-au-dessus-eau-jour-ete-nature-verte_212944-2699.jpg'
+      },
+      {
+        nom: 'Cactus mâle Alpha',
+        prix: '0',
+        latin: 'Aspera Cactus',
+        detail: "C'est reparti comme en 46",
+        img: 'https://cdn.discordapp.com/attachments/917719419986251846/939136364425904158/unknown.png'
+      },
+      {
+        nom: 'Chaud du cul',
+        prix: 99.99,
+        latin: 'Culus Tuus Foetet',
+        detail: 'Prend le mon reuf',
+        img: 'https://previews.123rf.com/images/bogdanhoda/bogdanhoda1408/bogdanhoda140800038/30540044-mod%C3%A8le-de-beau-m%C3%A2le-qui-transporte-des-billes-du-bois-de-coupe-et-pose.jpg'
+      }
+    ]);
+  
+
+  //     //Modal pop up du panier
+  // const[modalOpen, setModalOpen] = useState(false);
 
     
 
@@ -397,7 +431,7 @@ const viderPanier = () => {
         <Routes>
           <Route path="/" element={<Accueil resetText={resetText} changeMonChoix={changeMonChoix} acheter={acheter} item={item} />} />
           <Route path="/detail" element={<Detail text={text.text} monChoix={monChoix} acheter={acheter} item={item}/>} />
-          <Route path="/seller" element={<Seller />} />
+          <Route path="/seller" element={<Seller acheterCactus={acheterCactus} />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/categorie" element={<Categorie changeElement={changeElement} />}>
@@ -405,7 +439,7 @@ const viderPanier = () => {
             <Route path="/categorie/arbustes" element={<Arbustes element={element} acheter={acheter} item={item} />} />
             <Route path="/categorie/fruitiers" element={<Fruitiers element={element} acheter={acheter} item={item} />} />
           </Route>
-            <Route path="/panier" element={<Panier modalPayerOn={switchPayer} supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
+            <Route path="/panier" element={<Panier viderPanier={viderPanier} modalPayerOn={switchPayer} supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
         </Routes>
       </div>
       <div>

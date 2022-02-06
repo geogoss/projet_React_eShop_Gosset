@@ -97,6 +97,7 @@ export default function Panier(props) {
 
             </div>
             <div className='text-end'>
+                <button onClick={ props.viderPanier} className='btn btn-success me-5'>Vider le panier</button>
                 <button onClick={props.modalPayerOn} className='btn btn-success '>Payer</button>
             </div>
         </div>

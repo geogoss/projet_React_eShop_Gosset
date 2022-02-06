@@ -11,12 +11,8 @@ import {
 const Footer = () => {
   return (
     <Box>
-      <div style={{
-        color: "#94c4a0",
-        textAlign: "center",
-        marginTop: "-50px",
-      }}>
-        <h2>Jardin du Monde</h2>La où vous trouverez ce qu'il vous faut pour votre jardin <br/> même un cactus hehe
+      <div className="text-success" style={{textAlign: "center", marginTop: "-50px",}}>
+      <h2>Jardin du Monde</h2>La où vous trouverez ce qu'il vous faut pour votre jardin <br /> même un 🌵cactus🌵
       </div>
       <Container>
         <Row>
