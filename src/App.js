@@ -120,6 +120,18 @@ const switchModalReduction =() => {
     setMonChoix(newChoix);
   }
 
+  const resetMonChoix = () => {
+    setMonChoix('rien')
+  }
+
+
+  const [text, setText] = useState(
+    {text: "Choisissez une carte dans Accueil pour avoir des détails"}
+  )
+  
+  const resetText = () => {
+    setText({text: "Choisissez une carte dans Accueil pour avoir des détails"})
+  }
 
     // Nassim ---------------------------------------------------------------------
     const [item, setItem] = useState([
@@ -358,10 +370,10 @@ const switchModalReduction =() => {
       {toggleCompte && <ModalCompte modalSecondOn={switchCompteSecond} modalOf={switchCompte} />}
       {toggleCompteSecond && <ModalCompte2 modalOf={switchCompteSecond} />}
 
-      <Navbar modalOn={switchCompte} />
+      <Navbar resetMonChoix={resetMonChoix} setText={setText}  text={text.text} modalOn={switchCompte} />
         <Routes>
-          <Route path="/" element={<Accueil changeMonChoix={changeMonChoix} acheter={acheter} item={item} />} />
-          <Route path="/detail" element={<Detail monChoix={monChoix} acheter={acheter} item={item}/>} />
+          <Route path="/" element={<Accueil resetText={resetText} changeMonChoix={changeMonChoix} acheter={acheter} item={item} />} />
+          <Route path="/detail" element={<Detail text={text.text} monChoix={monChoix} acheter={acheter} item={item}/>} />
           <Route path="/seller" element={<Seller />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/contact" element={<Contact />} />

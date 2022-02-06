@@ -1,8 +1,20 @@
 import React from 'react';
 import "./Navbar.css"
 import { Link, NavLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-export default function Navbar(props) {
+export default function Navbar({text, setText, modalOn, resetMonChoix}) {
+
+    const navigate = useNavigate()
+
+    let changeText = (e) => {
+        if (e.key === "Enter") {
+            text = e.target.value
+            setText({text})
+            resetMonChoix()
+            
+        };
+    };
 
 
     return (
@@ -15,13 +27,15 @@ export default function Navbar(props) {
             {/* partie Input recherche du Header */}
             <div className="preNavbar">
                 <div className="divInput input-group">
-                    <input type="text" placeholder='Chercher' />
-                    <span className='input-group-text bg-success text-white'><i class="loupe fas fa-search"></i></span>
+                    <input onKeyPress={changeText}
+                    type="text" placeholder='Chercher' />
+                    <span onClick={() => navigate("/detail")}
+                    className='input-group-text bg-success text-white'><i class="loupe fas fa-search"></i></span>
                 </div>
                 <div className="panier">
                     <div className='monCompte bg-success text-white'>
                         <i class="far fa-user-circle"></i>
-                        <span onClick={props.modalOn} className='ps-2'>Mon Compte</span>
+                        <span onClick={modalOn} className='ps-2'>Mon Compte</span>
                     </div>
                     <div className='monPanier bg-success text-white'>
                         <i class="fas fa-list"></i>

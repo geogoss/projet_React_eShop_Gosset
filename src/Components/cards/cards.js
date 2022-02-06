@@ -13,6 +13,7 @@ function Cards(props) {
                     <div onClick={() => {
                         props.changeMonChoix(props.name)
                         navigate("/detail")
+                        props.resetText()
                     }}
                     className='imgdiv'>
                         <img src={props.image} alt="" />
