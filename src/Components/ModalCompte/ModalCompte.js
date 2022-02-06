@@ -5,7 +5,7 @@ export default function ModalCompte(props) {
     return (
 
         <div className='cadreCompte'>
-            <div className="formulaire bg-light">
+            <div className="formulaire formuModalCompte bg-light">
                 <form className="mt-5 mx-auto bg-light">
                     <div className="text-end">
                         <i onClick={props.modalOf} className="croix fas fa-times" />

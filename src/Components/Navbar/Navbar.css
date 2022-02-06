@@ -11,8 +11,15 @@
     .panier{
         font-size: 10px;
     }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .langue span{
+        font-size: 8px;
+    }
 
 }
+
 
 /* .jardin{
     font-family: Neonderthaw, Arial, Helvetica, sans-serif;

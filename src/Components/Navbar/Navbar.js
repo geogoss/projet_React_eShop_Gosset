@@ -62,12 +62,17 @@ export default function Navbar(props) {
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="cadeaux" href="#" class="nav-link">Idées Cadeaux</NavLink>
+                                        to="contact" href="#" class="nav-link">Contact</NavLink>
                                 </li>
                                 <li class="nav-item">
                                     <NavLink
                                         className={({ isActive }) => isActive ? "activeLink" : ""}
-                                        to="contact" href="#" class="nav-link">Contact</NavLink>
+                                        to="detail" href="#" class="nav-link">Détails</NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink
+                                        className={({ isActive }) => isActive ? "activeLink" : ""}
+                                        to="admin" href="#" class="nav-link">Admin</NavLink>
                                 </li>
                             </ul>
                         </div>

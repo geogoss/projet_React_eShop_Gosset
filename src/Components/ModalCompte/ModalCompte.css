@@ -1,4 +1,29 @@
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .formuModalCompte{
+        width: 70% !important;
 
+    }
+
+    .formuModalCompte2{
+        position: absolute;
+        top: 50px;
+        left: 20px;
+    }
+    .formuModalCompte2 h1{
+        font-size: 20px !important;
+    }
+
+    .formuModalCompte2 label{
+
+        font-size: 10px !important;
+    }
+    .formuModalCompte2 input{
+
+        font-size: 10px !important;
+    }
+    
+
+}
 /* ModalCompte 1 et ModalCompte 2 */
 .cadreCompte{
     height:100vh;
@@ -17,16 +42,10 @@
 
 .formulaire{
     padding: 0px 30px;
+    border-radius: 20px;
 }
 
 .croix{
     cursor: pointer;
 }
-
-
-
-
-
-
-
 

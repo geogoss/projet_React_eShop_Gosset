@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Contact.css"
-import Navbar from '../Navbar/Navbar';
 
 export default function Contact() {
   return <div className='cadreContact mb-5'>
@@ -73,7 +72,7 @@ export default function Contact() {
 
 
       <aside className='text-center'>
-        <h3 className='text-center'>Coordonnées</h3>
+        <h3 className='text-center pt-3'>Coordonnées</h3>
         <div className="coordonnees pt-3">
           <p className='fs-5'>Jardins du Monde</p>
           <p>Boland François</p>

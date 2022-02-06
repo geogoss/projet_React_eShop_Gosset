@@ -1,5 +1,6 @@
 import React from "react";
 import "./ModalPanier.css";
+import { Link } from "react-router-dom";
 
 
 function ModalPanier(props) {
@@ -7,7 +8,7 @@ function ModalPanier(props) {
     <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
-          <button
+          <button className=" text-dark"
             onClick={() => {
               props.setOpenModal(false);
             }}
@@ -15,19 +16,21 @@ function ModalPanier(props) {
         </div>
 
         <div className="title">
-          <h1>Voici votre panier !</h1>
+          <h1>Panier</h1>
         </div>
 
         <div className="body">
-          <p>Vous avez ajouter: <br/> → {props.name} à votre panier</p>
+          <p className="fs-5">Vous avez ajouté: <br /> → <span className="text-success">{props.name}</span> </p>
         </div>
 
         <div className="footer">
           <button
-            onClick={() => {props.setOpenModal(false);}}id="cancelBtn">
+            onClick={() => { props.setOpenModal(false); }} id="cancelBtn">
             Continuer mes achats
           </button>
-          <button>Vers mon panier</button>
+          <button>
+            <Link to='/panier'>Vers mon panier</Link>
+          </button>
         </div>
       </div>
     </div>

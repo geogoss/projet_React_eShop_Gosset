@@ -7,17 +7,23 @@ export default function Categorie(props) {
         <div className='cadreCategorie'>
             <nav>
                 <ul className="liste">
-                    <li>
+                    <li onClick={() => {
+                        props.changeElement('arbre')
+                    }}>
                         <NavLink
                             className={({ isActive }) => isActive ? "text-success fw-bold" : ""}
                             to="/categorie/arbres" >Arbres</NavLink>
                     </li>
-                    <li>
+                    <li onClick={() => {
+                        props.changeElement('arbuste')
+                    }}>
                         <NavLink
                             className={({ isActive }) => isActive ? "text-success fw-bold" : ""}
                             to="/categorie/arbustes" >Arbustes</NavLink>
                     </li>
-                    <li>
+                    <li onClick={() => {
+                        props.changeElement('fruitier')
+                    }}>
                         <NavLink
                             className={({ isActive }) => isActive ? "text-success fw-bold" : ""}
                             to="/categorie/fruitiers" >Arbres fruitiers</NavLink>

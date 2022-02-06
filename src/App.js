@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import { useState } from "react";
 import Accueil from "./Components/Accueil/Accueil";
 import Seller from "./Components/Seller/Seller";
-import Cadeaux from "./Components/Cadeaux/Cadeaux"
+import Admin from "./Components/Admin/Admin"
 import Contact from "./Components/Contact/Contact";
 import Categorie from "./Components/Categorie/Categorie";
 import Arbres from "./Components/Categorie/Arbres";
@@ -14,6 +14,8 @@ import ModalCompte2 from "./Components/ModalCompte/ModalCompte2";
 import Panier from "./Components/Panier/Panier";
 import ModalReduction from "./Components/Panier/ModalReduction";
 import Footer from "./Components/Footer/footer";
+import { useNavigate } from "react-router-dom";
+import Detail from "./Components/Accueil/Detail"
 
 
 function App() {
@@ -87,20 +89,19 @@ const switchModalReduction =() => {
 
   };
 
-// fonction pour supprimer des éléments du tableau panier
+  const navigate = useNavigate()
+
   let supprimer = (i) => {
     // copie des useState => variables temporaires
     let copieMonPanier = monPanier;
-    console.log(copieMonPanier);
     // action
     copieMonPanier.splice(i, 1);
 
     // update les useState
     setMonPanier(copieMonPanier);
-
+    navigate("/panier")
   };
 
-  // Fonction pour que l'argent total soit en phase avec argent(prix element)
   const essai = (nbr) => {
     setArgentTotal(argentTotal + nbr)
   } 
@@ -108,7 +109,16 @@ const switchModalReduction =() => {
     setArgentTotal(argentTotal - nbr)
   } 
 
-    
+  const [element, setElement] = useState('');
+  const changeElement = newElement => {
+    setElement(newElement)
+  }
+
+  const [monChoix, setMonChoix] = useState('rien');
+  const changeMonChoix = newChoix => {
+    newChoix = newChoix
+    setMonChoix(newChoix);
+  }
 
 
     // Nassim ---------------------------------------------------------------------
@@ -350,14 +360,15 @@ const switchModalReduction =() => {
 
       <Navbar modalOn={switchCompte} />
         <Routes>
-          <Route path="/" element={<Accueil acheter={acheter} item={item} />} />
+          <Route path="/" element={<Accueil changeMonChoix={changeMonChoix} acheter={acheter} item={item} />} />
+          <Route path="/detail" element={<Detail monChoix={monChoix} acheter={acheter} item={item}/>} />
           <Route path="/seller" element={<Seller />} />
-          <Route path="/cadeaux" element={<Cadeaux />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/categorie" element={<Categorie />}>
-            <Route path="/categorie/arbres" element={<Arbres acheter={acheter} item={item} />} />
-            <Route path="/categorie/arbustes" element={<Arbustes acheter={acheter} item={item} />} />
-            <Route path="/categorie/fruitiers" element={<Fruitiers acheter={acheter} item={item} />} />
+          <Route path="/categorie" element={<Categorie changeElement={changeElement} />}>
+            <Route path="/categorie/arbres" element={<Arbres element={element} acheter={acheter} item={item} />} />
+            <Route path="/categorie/arbustes" element={<Arbustes element={element} acheter={acheter} item={item} />} />
+            <Route path="/categorie/fruitiers" element={<Fruitiers element={element} acheter={acheter} item={item} />} />
           </Route>
             <Route path="/panier" element={<Panier supprimer={supprimer} essaiMoins={essaimoins} essai={essai}  panier={monPanier} item={item}  appliquerReduction={appliquerReduction} modalReductionOnOf={switchModalReduction} argentHtva={argentHtva} argentTotal={argentTotal} argent={argent} toggleReduction={toggleReduction} reductionOnOf={switchReduction} />} />
         </Routes>

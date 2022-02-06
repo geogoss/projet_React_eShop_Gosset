@@ -4,7 +4,7 @@ import "./ModalCompte.css"
 export default function ModalCompte2(props) {
     return (
         <div className='cadreCompte'>
-            <div className="formulaire bg-light">
+            <div className="formulaire formuModalCompte2 bg-light">
                 <form className=" mx-auto bg-light">
                     <div className="text-end">
                         <i onClick={props.modalOf} className="croix fas fa-times" />
