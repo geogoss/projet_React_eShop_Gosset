@@ -1,3 +1,20 @@
+@media screen and (min-width: 320px) and (max-width: 760px){
+    .plusetmoins{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .cadrePanier{
+        margin-left: 0 !important;
+    }
+}
+
+.cadrePanier{
+    margin: 0 auto;
+}
+
+
 .moins, .nombre, .plus{
     padding: 2px 10px;
     border: 1px solid black;
@@ -19,6 +36,10 @@
 .table img{
     width: 100px;
 
+}
+
+.table{
+    margin-top: 20px;
 }
 
 .total{
@@ -47,6 +68,3 @@
     right: 5px;
     cursor: pointer;
 }
-
-
-

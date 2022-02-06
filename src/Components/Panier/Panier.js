@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
 import "./Panier.css";
 import PanierAjout from "./PanierAjout";
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +7,10 @@ export default function Panier(props) {
 
     const navigate = useNavigate()
 
+    const enlever = (i,article) => {
+        props.supprimer(i)
+        props.essaiMoins(article.prix * article.panier)
+    } 
 
     const augmente = (el) => {
         el.panier += 1
@@ -34,11 +37,11 @@ export default function Panier(props) {
     // }
 
     return (
-        <div className='cadrePanier w-50 mx-auto'>
+        <div className='cadrePanier w-50'>
             <table class="table table-info table-striped table-hover">
                 <thead>
                     <tr className='table-primary'>
-                        <th scope="col">#</th>
+                        <th scope="col"></th>
                         <th scope="col">Article</th>
                         <th scope="col">nom</th>
                         <th scope="col">Prix</th>
@@ -47,7 +50,7 @@ export default function Panier(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {props.panier.map((item, i) => (<PanierAjout key={i} supprimer={() => props.supprimer(i)} diminue={() => diminue(item)} incr={() => augmente(item)} panier={item.panier} essaiMoins={props.essaiMoins} essai={props.essai} argentTotal={props.argentTotal.toFixed(2)} achat={() => { props.acheter(i) }} argent={item.argent} img={item.img} nom={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
+                    {props.panier.map((item, i) => (<PanierAjout key={i} supprimer={() => enlever(i, item)} diminue={() => diminue(item)} incr={() => augmente(item)} panier={item.panier} essaiMoins={props.essaiMoins} essai={props.essai} argentTotal={props.argentTotal.toFixed(2)} achat={() => { props.acheter(i) }} argent={item.argent} img={item.img} nom={item.nom} latin={item.latin} detail={item.detail} prix={item.prix} />))}
 
                 </tbody>
             </table>
@@ -92,6 +95,9 @@ export default function Panier(props) {
                     </tbody>
                 </table>
 
+            </div>
+            <div className='text-end'>
+                <button className='btn btn-success '>Payer</button>
             </div>
         </div>
     );
