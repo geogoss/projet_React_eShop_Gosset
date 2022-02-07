@@ -3,6 +3,7 @@ import "./Navbar.css"
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function Navbar({text, setText, modalOn, resetMonChoix}) {
 
     const navigate = useNavigate()
@@ -18,7 +19,7 @@ export default function Navbar({text, setText, modalOn, resetMonChoix}) {
 
 
     return (
-        // partie fr/en/nl
+        
         <div className='cardreNavbar'>
             {/* partie haut navbar  => FR/EN/NL */}
             <div className="langue">
