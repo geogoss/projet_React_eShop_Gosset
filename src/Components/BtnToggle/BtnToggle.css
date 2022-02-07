@@ -1,0 +1,17 @@
+.btnToggle{
+    position: absolute;
+    top: 20px;
+    right: 120px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+
+.darkBtn{
+    background-color: black;
+    color: white;
+}

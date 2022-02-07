@@ -1,7 +1,12 @@
 import React from 'react';
-import "./Contact.css"
+import "./Contact.css";
+import { useContext } from 'react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 export default function Contact() {
+
+  const {theme} = useContext(ThemeContext)
+
   return <div className='cadreContact mb-5'>
     <header className='w-100 mt-5'>
       <div className="texte w-75 mx-auto text-center p-3">
@@ -14,7 +19,7 @@ export default function Contact() {
     <section>
       <article className='formulaire pt-3'>
         <h3 className='text-center'>Formulaire</h3>
-        <form className="mx-auto">
+        <form className={theme ? "mx-auto bg-dark text-white " :"mx-auto"}>
           <p>
             <label htmlFor="nom" className="form-label">Nom</label>
             <input type="text" name="nom" id="nom" className="form-control" />
@@ -50,7 +55,7 @@ export default function Contact() {
             <label htmlFor="mode_sombre_pour_switch" className="form-check-label">J'ai déjà fait des commandes chez jardins du monde</label>
           </p>
         </form>
-        <div className="captcha bg-light w-50 p-3 mt-5 mx-auto d-flex justify-content-between align-items-center">
+        <div className={theme ? "bg-dark text-white captcha bg-light w-50 p-3 mt-5 mx-auto d-flex justify-content-between align-items-center"  : "captcha bg-light w-50 p-3 mt-5 mx-auto d-flex justify-content-between align-items-center"}>
           <p className="form-check">
             <input type="checkbox" name="mode_sombre" className="form-check-input" id="mode_sombre" />
             <label htmlFor="mode_sombre" className="form-check-label">Je ne suis pas un robot</label>
@@ -60,7 +65,7 @@ export default function Contact() {
           <i class="fas fa-recycle"></i>
         </div>
 
-        <div className='bouton p-3 d-flex flex-column justify-content-center align-items-center'>
+        <div className={theme ? 'bg-dark text-white bouton p-3 d-flex flex-column justify-content-center align-items-center' : 'bouton p-3 d-flex flex-column justify-content-center align-items-center'}>
           <p className="form-check">
             <input type="checkbox" name="mode_sombre" className="form-check-input" id="mode_sombre" />
             <label htmlFor="mode_sombre" className="form-check-label">J'accepte les <span className="text-success">conditions générales</span> et la <span className="text-success">politiques de confidentialité</span></label>
@@ -71,7 +76,7 @@ export default function Contact() {
       </article>
 
 
-      <aside className='text-center'>
+      <aside className={theme ? 'text-center bg-dark text-white' : 'text-center'}>
         <h3 className='text-center pt-3'>Coordonnées</h3>
         <div className="coordonnees pt-3">
           <p className='fs-5'>Jardins du Monde</p>

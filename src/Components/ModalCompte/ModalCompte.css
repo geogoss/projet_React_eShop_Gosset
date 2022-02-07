@@ -49,3 +49,7 @@
     cursor: pointer;
 }
 
+.formulaireDark{
+    background-color: #222;
+    color: white;
+}

@@ -1,10 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
 import "./Navbar.css"
 import { Link, NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import BtnToggle from '../BtnToggle/BtnToggle';
+import { ThemeContext } from '../Context/ThemeContext';
+
 
 
 export default function Navbar({text, setText, modalOn, resetMonChoix}) {
+
+    const {toggleTheme, theme} = useContext(ThemeContext)
 
     const navigate = useNavigate()
 
@@ -20,13 +26,14 @@ export default function Navbar({text, setText, modalOn, resetMonChoix}) {
 
     return (
         
-        <div className='cardreNavbar'>
+        <div className= {theme ? "cadreNavbar" : "cadreNavbarDark"} >
+            <BtnToggle />
             {/* partie haut navbar  => FR/EN/NL */}
             <div className="langue">
                 <span><span className='text-success'>FR</span> / <span>EN</span> / <span>NL</span></span>
             </div>
             {/* partie Input recherche du Header */}
-            <div className="preNavbar">
+            <div className={theme ? "preNavbar" : "darkPreNavbar"}>
                 <div className="divInput input-group">
                     <input onKeyPress={changeText}
                     type="text" placeholder='Chercher' />

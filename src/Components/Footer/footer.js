@@ -7,13 +7,21 @@ import {
   FooterLink,
   Heading,
 } from "./FooterStyles";
+import "./footer.css";
+import { useContext } from "react";
+import {ThemeContext} from '../Context/ThemeContext'
 
 const Footer = () => {
+
+  const {toggleTheme, theme} = useContext(ThemeContext)
+
   return (
+    
     <Box>
-      <div className="text-success" style={{textAlign: "center", marginTop: "-50px",}}>
+      <div className={theme ? 'text-success footer' : 'text-success'} style={{textAlign: "center", marginTop: "-50px",}}>
       <h2>Jardin du Monde</h2>La où vous trouverez ce qu'il vous faut pour votre jardin <br /> même un 🌵cactus🌵
       </div>
+      <div className={theme ? "footer" : ""}>
       <Container>
         <Row>
           <Column>
@@ -69,6 +77,7 @@ const Footer = () => {
           </Column>
         </Row>
       </Container>
+      </div>
     </Box>
   );
 };

@@ -1,12 +1,16 @@
 import React from "react";
 import "./ModalPanier.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../Context/ThemeContext";
 
 
 function ModalPanier(props) {
+
+  const {theme} = useContext(ThemeContext)
   return (
     <div className="modalBackground">
-      <div className="modalContainer">
+      <div className={theme ? "modalContainerDark" : "modalContainer"}>
         <div className="titleCloseBtn">
           <button className=" text-dark"
             onClick={() => {

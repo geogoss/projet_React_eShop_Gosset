@@ -2,9 +2,12 @@ import React from 'react';
 import "./Panier.css";
 import PanierAjout from "./PanierAjout";
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 export default function Panier(props) {
 
+    const {theme} = useContext(ThemeContext)
     const navigate = useNavigate()
 
     const enlever = (i,article) => {
@@ -38,7 +41,7 @@ export default function Panier(props) {
 
     return (
         <div className='cadrePanier w-50'>
-            <table class="table table-info table-striped table-hover">
+            <table class={theme ? "table table-dark table-striped table-hover" : "table table-info table-striped table-hover"}>
                 <thead>
                     <tr className='table-primary'>
                         <th scope="col"></th>
@@ -58,7 +61,7 @@ export default function Panier(props) {
                 <div className="reduction">
                     <p className='form-check'>
                         <input onClick={props.reductionOnOf} type="checkbox" name="reduction" className='form-check-input' />
-                        <label className='form-check-label' htmlFor="reduction">J'ai un bon de réduction</label>
+                        <label className={theme ? 'form-check-label text-white' : 'form-check-label'} htmlFor="reduction">J'ai un bon de réduction</label>
                     </p>
                     {props.toggleReduction &&
                         <p className='input-group inputReduction'>
@@ -86,9 +89,9 @@ export default function Panier(props) {
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope='row'>à payer</th>
+                            <th className={theme ? "text-white" : "" }  scope='row'>à payer</th>
                             <th></th>
-                            <th>{props.argentHtva.toFixed(2)} <i class="fas fa-euro-sign"></i></th>
+                            <th className={theme ? "text-white" : "" } >{props.argentHtva.toFixed(2)} <i class="fas fa-euro-sign"></i></th>
                             <th></th>
                             <th className='table-active text-danger'>{props.argentTotal.toFixed(2)} <i class="fas fa-euro-sign"></i></th>
                         </tr>

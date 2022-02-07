@@ -1,11 +1,16 @@
 import React from 'react';
 import "./ModalCompte.css"
+import { useContext } from 'react';
+import { ThemeContext } from '../Context/ThemeContext';
 
 export default function ModalCompte2(props) {
+
+    const {theme} = useContext(ThemeContext)
+
     return (
         <div className='cadreCompte'>
-            <div className="formulaire formuModalCompte2 bg-light">
-                <form className=" mx-auto bg-light">
+            <div className={theme ? "formulaire formuModalCompte2 formulaireDark" :"formulaire formuModalCompte2 bg-light"}>
+                <form className={theme ? "mx-auto my-5 formulaireDark" : " mx-auto my-5 bg-light"}>
                     <div className="text-end m-0">
                         <i onClick={props.modalOf} className="croix fas fa-times" />
                     </div>

@@ -39,7 +39,7 @@ export const Row = styled.div`
 `;
    
 export const FooterLink = styled.a`
-  color: #fff;
+  color: grey;
   margin-bottom: 10px;
   font-size: 14px;
   text-decoration: none;
@@ -52,7 +52,7 @@ export const FooterLink = styled.a`
    
 export const Heading = styled.p`
   font-size: 20px;
-  color: #fff;
+  color: grey;
   margin-bottom: 20px;
   font-weight: bold;
   margin-top: 15px;
